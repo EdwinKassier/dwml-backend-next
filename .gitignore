@@ -1,0 +1,33 @@
+# Ignore Node.js build artifacts
+node_modules
+
+# Ignore Next.js build directory
+.out/
+
+# Ignore development server files
+.next/
+.cache/
+build/
+server/
+
+# Ignore environment-specific .env files
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Ignore automatically generated files and directories
+.DS_Store
+.cache/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.idea/
+.vscode/
+
+# Ignore package manager files
+package-lock.json
+yarn.lock
+
+# Ignore test files
+__tests__/
