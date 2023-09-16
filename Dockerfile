@@ -1,7 +1,7 @@
 FROM node:18-alpine as builder
 WORKDIR /my-space
 
-COPY package.json package-lock.json ./
+COPY package.json pnpm-lock.yaml ./
 
 # Install pnpm
 RUN npm install -g pnpm
