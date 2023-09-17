@@ -21,6 +21,12 @@ export async function GET(request) {
 
     console.log(`We have received the result ${result}`)
 
-    return NextResponse.json({ result: result, graph_data: graph_data })
+    return NextResponse.json({ result: result, graph_data: graph_data }, {
+      headers: {
+          'Access-Control-Allow-Origin': '*', // Allow requests from any origin (not recommended for production)
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+          // Other CORS headers as needed
+      }
+  });
 
   }
