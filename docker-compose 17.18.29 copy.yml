@@ -1,0 +1,13 @@
+version: "1.0"
+services:
+  website:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: "always"
+    volumes:
+      - ./.:/code
+      - /code/node_modules
+      - /code/.next
+    ports:
+      - "3000:3000"
