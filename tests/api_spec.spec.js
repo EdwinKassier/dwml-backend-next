@@ -9,7 +9,7 @@ test('UI render test', async ({ page }) => {
 
 
 test('Test api - all valid', async ({ request }) => {
-  const newIssue = await request.get(`http://localhost:3001/api/process_request`, {
+  const newIssue = await request.get(`/api/process_request`, {
     params: {
       symbol: 'ETH',
       investment: 123,
@@ -28,7 +28,7 @@ test('Test api - all valid', async ({ request }) => {
 
 
 test('Test api - invalid symbol', async ({ request }) => {
-  const newIssue = await request.get(`http://localhost:3001/api/process_request`, {
+  const newIssue = await request.get(`/api/process_request`, {
     params: {
       symbol: 123,
       investment: 123,
@@ -43,7 +43,7 @@ test('Test api - invalid symbol', async ({ request }) => {
 })
 
 test('Test api - no symbol', async ({ request }) => {
-  const newIssue = await request.get(`http://localhost:3001/api/process_request`, {
+  const newIssue = await request.get(`/api/process_request`, {
     params: {
       investment: 123,
     }
@@ -58,7 +58,7 @@ test('Test api - no symbol', async ({ request }) => {
 
 
 test('Test api - invalid investment', async ({ request }) => {
-  const newIssue = await request.get(`http://localhost:3001/api/process_request`, {
+  const newIssue = await request.get(`/api/process_request`, {
     params: {
       symbol: 'ETH',
       investment: 'ETH',
@@ -74,7 +74,7 @@ test('Test api - invalid investment', async ({ request }) => {
 })
 
 test('Test api - no investment', async ({ request }) => {
-  const newIssue = await request.get(`http://localhost:3001/api/process_request`, {
+  const newIssue = await request.get(`/api/process_request`, {
     params: {
       symbol: 'ETH',
     }
@@ -90,7 +90,7 @@ test('Test api - no investment', async ({ request }) => {
 
 
 test('Test api - no args', async ({ request }) => {
-  const newIssue = await request.get(`http://localhost:3001/api/process_request`, {
+  const newIssue = await request.get(`/api/process_request`, {
     params: {
     }
   });

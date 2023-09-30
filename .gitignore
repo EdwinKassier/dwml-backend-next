@@ -30,3 +30,6 @@ yarn.lock
 
 # Ignore test files
 __tests__/
+/test-results/
+/playwright-report/
+/playwright/.cache/
