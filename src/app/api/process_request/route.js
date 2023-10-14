@@ -9,15 +9,28 @@ export async function GET(request) {
 
     console.log(request.nextUrl.searchParams.get("symbol"))
 
-    var symbol = request.nextUrl.searchParams.get("symbol") !== null ? request.nextUrl.searchParams.get("symbol") : 0
-    var investment = request.nextUrl.searchParams.get("investment") !== null ? parseFloat(request.nextUrl.searchParams.get("investment")) : 0
+    var symbol = request.nextUrl.searchParams.get("symbol") !== null ? request.nextUrl.searchParams.get("symbol") : ""
+    var investment = request.nextUrl.searchParams.get("investment") !== null ? parseFloat(request.nextUrl.searchParams.get("investment")) : ""
+
+    if (symbol == "" ){
+        return NextResponse.json({"result":"Symbol doesn't exist","graph_data":"Symbol doesn't exist"});
+      }
+
+      if (investment=="" || typeof investment == 'string'){
+        return NextResponse.json({"result":"Invalid investment amount","graph_data":"Invalid investment amount"});
+      }
 
     const cache = new DataCache(symbol, investment);
     const collector = new DataCollector(symbol, investment);
     const creator = new GraphCreator(symbol, investment);
 
-    const result = await collector.driverLogic()
-    const graph_data = await creator.driver_logic()
+    let result = await collector.driverLogic()
+    let graph_data = await creator.driver_logic()
+
+    if (result == undefined){
+        result = "Symbol doesn't exist"
+        graph_data = "Symbol doesn't exist"
+      }
 
     console.log(`We have received the result ${result}`)
 
